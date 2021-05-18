@@ -36,13 +36,19 @@ public class AirplaneTicketController {
             final AirplaneTicket airplaneTicket = new AirplaneTicket("ID-" + i, price, destination);
             airplaneTicket.setStatus(TicketStatus.NEW);
 
-            tickets.add(airplaneTicket);
+            this.tickets.add(airplaneTicket);
         }
+    }
+    
+    public AirplaneTicketController(){
+        generateTickets();
     }
 
     public List<AirplaneTicket> getTickets() {
         return tickets;
     }
+    
+    
 
     /**
      * Get ticket details by ticket id
@@ -52,7 +58,11 @@ public class AirplaneTicketController {
      * @apiNote: this method should throw {@link NoTicketAvailableException} exception if ticket not found
      */
     public AirplaneTicket getTicketDetails(final String ticketId) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        for(AirplaneTicket ticket : tickets){
+            if(ticket.getId().equals(ticketId))
+                return ticket;
+        }
+        throw new NoTicketAvailableException();
     }
 
     /**
@@ -67,7 +77,8 @@ public class AirplaneTicketController {
      * {@link NoTicketAvailableException} - if destination exists but no ticket with NEW status available
      */
     public void buyTicket(final String destination, final String customerId) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        if(!destination.equals("Cluj-Napoca") && !destination.equals("Baia Mare") && !destination.equals("Timisoara"))
+            throw new NoDestinationAvailableException();
     }
 
     /**

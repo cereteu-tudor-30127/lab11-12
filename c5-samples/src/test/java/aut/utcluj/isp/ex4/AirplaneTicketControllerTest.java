@@ -22,7 +22,7 @@ public class AirplaneTicketControllerTest {
         for (AirplaneTicket airplaneTicket : tickets) {
             Assert.assertNotNull("Airplane ticket should not be null", airplaneTicket);
             Assert.assertNotNull("Ticket id should not be null", airplaneTicket.getId());
-            Assert.assertEquals("Ticket status should be active", TicketStatus.NEW, airplaneTicket.getStatus());
+            Assert.assertEquals("Ticket status should be new", TicketStatus.NEW, airplaneTicket.getStatus());
         }
     }
 

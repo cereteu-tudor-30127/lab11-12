@@ -5,7 +5,7 @@ package aut.utcluj.isp.ex4;
  */
 public enum TicketStatus {
     /**
-     * By default, any ticket has ACTIVE status
+     * By default, any ticket has NEW status
      */
     NEW,
 
